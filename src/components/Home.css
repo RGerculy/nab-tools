@@ -1,0 +1,90 @@
+.home { display: flex; flex-direction: column; gap: 48px; }
+
+/* Promo banner for GameDev Tools */
+.banner {
+  display: block;
+  text-align: center;
+  padding: 10px 16px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.banner:hover { background: var(--accent); color: #06251d; }
+.banner strong { font-weight: 700; }
+
+.hero { text-align: center; padding: 48px 0 16px; }
+.hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 12px; }
+.hero-sub { color: var(--fg-muted); font-size: 1.05rem; max-width: 640px; margin: 0 auto 28px; }
+
+.hero-search {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.hero-search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--fg-muted); }
+.hero-search input {
+  width: 100%;
+  padding: 14px 18px 14px 46px;
+  font-size: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.hero-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+.category-section { display: flex; flex-direction: column; gap: 20px; }
+.category-head h2 { margin: 0 0 4px; font-size: 1.35rem; }
+.category-head p { margin: 0; color: var(--fg-muted); font-size: 0.92rem; }
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  color: var(--fg);
+  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+.tool-card:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--card-hover); }
+.tool-card-icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  margin-bottom: 4px;
+}
+.tool-card-name { margin: 0; font-size: 1.05rem; }
+.tool-card-desc { margin: 0; color: var(--fg-muted); font-size: 0.88rem; flex: 1; }
+.tool-card-cta { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+
+.search-results-section h2 { font-size: 1.2rem; }
+.no-results { color: var(--fg-muted); }
+
+.privacy-note {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.privacy-note h2 { margin: 0 0 8px; font-size: 1.2rem; }
+.privacy-note p { margin: 0; color: var(--fg-muted); max-width: 720px; }
+
+@media (max-width: 640px) {
+  .hero { padding: 32px 0 8px; }
+  .tool-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .tool-card { padding: 16px; }
+}

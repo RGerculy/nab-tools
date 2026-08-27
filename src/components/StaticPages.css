@@ -1,0 +1,7 @@
+.static-page { max-width: 720px; }
+.static-page h1 { font-size: 1.8rem; }
+.static-page h2 { font-size: 1.1rem; margin-top: 28px; }
+.static-page li { margin-bottom: 10px; }
+.static-page .muted { color: var(--fg-muted); }
+.static-page.centered { text-align: center; padding: 60px 0; }
+.static-page.centered .btn { display: inline-flex; margin-top: 12px; }

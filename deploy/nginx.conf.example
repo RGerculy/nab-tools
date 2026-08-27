@@ -1,0 +1,35 @@
+# nginx server block — copy into /etc/nginx/sites-available/your-site and adjust
+# server_name, root, and ssl paths. Then: ln -s …/sites-available/your-site …/sites-enabled/ && nginx -t && systemctl reload nginx
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;   # ← change me
+
+    root /var/www/your-site;                   # change this to your dist/ folder
+    index index.html;
+
+    # SPA fallback: let react-router handle deep links (/tools/password-generator etc.)
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Hashed assets can be cached aggressively
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Basic security headers
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options SAMEORIGIN always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+
+    # Optional: HTTPS (recommended — use certbot: `certbot --nginx`)
+    # listen 443 ssl http2;
+    # ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+    # ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+}

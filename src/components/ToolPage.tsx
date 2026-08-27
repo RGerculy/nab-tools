@@ -5,6 +5,7 @@ import { toolBySlug } from '../data/tools';
 import { getContent } from '../data/content';
 import { ToolArticle } from './ContentSection';
 import { ToolIcon } from './icons';
+import { DEFAULT_TITLE, pageTitle } from '../data/brand';
 import './ToolPage.css';
 
 /*
@@ -142,13 +143,13 @@ export default function ToolPage() {
 
   useEffect(() => {
     if (tool) {
-      document.title = `${tool.name} — NAB Tools`;
+      document.title = pageTitle(tool.name);
       const meta = document.querySelector('meta[name="description"]');
       if (meta) meta.setAttribute('content', tool.seoDescription);
     } else {
-      document.title = 'Tool not found — NAB Tools';
+      document.title = pageTitle('Tool not found');
     }
-    return () => { document.title = 'NAB Tools — Free Online Tools, 100% in Your Browser'; };
+    return () => { document.title = DEFAULT_TITLE; };
   }, [tool]);
 
   if (!tool) {

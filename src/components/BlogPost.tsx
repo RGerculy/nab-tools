@@ -4,6 +4,7 @@ import { getArticleBySlug } from '../data/articles';
 import { toolBySlug } from '../data/tools';
 import { FaqItem } from './FaqItem';
 import './BlogPost.css';
+import { DEFAULT_TITLE, pageTitle } from '../data/brand';
 
 /**
  * Renders a single blog article at /blog/:slug.
@@ -15,12 +16,12 @@ export function BlogPost() {
 
   useEffect(() => {
     if (article) {
-      document.title = `${article.title} — NAB Tools`;
+      document.title = pageTitle(article.title);
     } else {
-      document.title = 'Article not found — NAB Tools';
+      document.title = pageTitle('Article not found');
     }
     return () => {
-      document.title = 'NAB Tools — Free Online Tools, 100% in Your Browser';
+      document.title = DEFAULT_TITLE;
     };
   }, [article]);
 
